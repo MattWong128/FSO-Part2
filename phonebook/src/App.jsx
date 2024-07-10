@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Filter from "./components/Filter";
+import PersonForm from "./components/PersonForm";
+import Persons from "./components/Persons";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -13,6 +16,15 @@ const App = () => {
 
   const queryResult = persons.filter((person) => person.name.includes(search));
 
+  const handleFilterChange = (e) => {
+    setSearch(e.target.value);
+  };
+  const handleSetNewName = (e) => {
+    setNewName(e.target.value);
+  };
+  const handleSetNewNumber = (e) => {
+    setNewNumber(e.target.value);
+  };
   const addNewPerson = (event) => {
     const doesNameExist = persons.some((person) => person.name === newName);
     if (doesNameExist) {
@@ -35,40 +47,19 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      Filter shown with
-      <input
-        type='text'
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <Filter searchQuery={search} onChange={handleFilterChange} />
       <h2>Add new</h2>
-      <form onSubmit={addNewPerson}>
-        <div>
-          name:
-          <input value={newName} onChange={(e) => setNewName(e.target.value)} />
-        </div>
-        <div>
-          Number:
-          <input
-            value={newNumber}
-            onChange={(e) => setNewNumber(e.target.value)}
-          />
-        </div>
-        <div>
-          <button type='submit'>add</button>
-        </div>
-        <div>
-          <h2>Numbers</h2>
 
-          {queryResult.map((person) => (
-            <p key={person.name}>
-              {person.name} {person.number}
-            </p>
-          ))}
-        </div>
-      </form>
       <div>
-        {/* debug: name: {newName} <br></br>number: {newNumber} search: {search} */}
+        <h2>Numbers</h2>
+        <PersonForm
+          onSubmit={addNewPerson}
+          newName={newName}
+          newNumber={newNumber}
+          nameOnchange={handleSetNewName}
+          numberOnChange={handleSetNewNumber}
+        />
+        <Persons queryResult={queryResult} />
       </div>
     </div>
   );
