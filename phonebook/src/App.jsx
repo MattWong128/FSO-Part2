@@ -5,6 +5,11 @@ const App = () => {
   const [newName, setNewName] = useState("");
 
   const addNewPerson = (event) => {
+    const doesNameExist = persons.some((person) => person.name === newName);
+    if (doesNameExist) {
+      alert(`${newName} is already added to the phone book`);
+      return;
+    }
     event.preventDefault();
     const newPersonObj = {
       name: newName,
@@ -29,7 +34,7 @@ const App = () => {
         </div>
         <div>
           {persons.map((person) => (
-            <p>{person.name}</p>
+            <p key={person.name}>{person.name}</p>
           ))}
         </div>
       </form>
