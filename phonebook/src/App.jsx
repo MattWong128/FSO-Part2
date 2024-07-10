@@ -50,17 +50,15 @@ const App = () => {
       <Filter searchQuery={search} onChange={handleFilterChange} />
       <h2>Add new</h2>
 
-      <div>
-        <h2>Numbers</h2>
-        <PersonForm
-          onSubmit={addNewPerson}
-          newName={newName}
-          newNumber={newNumber}
-          nameOnchange={handleSetNewName}
-          numberOnChange={handleSetNewNumber}
-        />
-        <Persons queryResult={queryResult} />
-      </div>
+      <h2>Numbers</h2>
+      <PersonForm
+        onSubmit={addNewPerson}
+        newName={newName}
+        newNumber={newNumber}
+        nameOnchange={handleSetNewName}
+        numberOnChange={handleSetNewNumber}
+      />
+      <Persons queryResult={queryResult} />
     </div>
   );
 };
