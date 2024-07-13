@@ -18,8 +18,8 @@ const App = () => {
     const note = notes.find((n) => n.id == id);
     const changedNote = { ...note, important: !note.important };
 
-    noteService.update(id, changedNote).then((response) => {
-      setNotes(notes.map((n) => (n.id !== id ? n : response)));
+    noteService.update(id, changedNote).then((returnedNote) => {
+      setNotes(notes.map((n) => (n.id !== id ? n : returnedNote)));
     });
   };
 
@@ -31,8 +31,8 @@ const App = () => {
       important: Math.random() < 0.5,
     };
 
-    noteService.create(noteObject).then((response) => {
-      setNotes(notes.concat(response));
+    noteService.create(noteObject).then((returnedNote) => {
+      setNotes(notes.concat(returnedNote));
       setNewNote("");
       console.log(notes);
     });
