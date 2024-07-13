@@ -3,7 +3,6 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 import axios from "axios";
-import server from "./services/Server";
 import Server from "./services/Server";
 
 const App = () => {
@@ -15,8 +14,8 @@ const App = () => {
   const queryResult = persons.filter((person) => person.name.includes(search));
 
   useEffect(() => {
-    axios.get("http://localhost:3001/persons").then((response) => {
-      setPersons(persons.concat(response.data));
+    Server.get().then((initialNumber) => {
+      setPersons(persons.concat(initialNumber));
     });
   }, []);
 

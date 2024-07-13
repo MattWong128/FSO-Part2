@@ -1,12 +1,9 @@
-import axios from "axios";
+const a = "foo";
+const b = 42;
+const c = {};
+const g = "asd";
 
-let x = 1,
-  y = true,
-  z = 3;
-
-let promise = axios
-  .get("http://localhost:3001/personss")
-  .then((res) => {
-    console.log(res.data);
-  })
-  .catch((err) => console.log("ERROR ", err));
+// Shorthand property names
+const o = { f, g, h };
+// In other words,
+console.log(o.g); // true
