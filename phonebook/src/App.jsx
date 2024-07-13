@@ -3,6 +3,8 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 import axios from "axios";
+import server from "./services/Server";
+import Server from "./services/Server";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -40,6 +42,7 @@ const App = () => {
       number: newNumber,
     };
     setPersons(persons.concat(newPersonObj));
+    Server.add(newPersonObj);
     setNewName("");
     setNewNumber("");
 
