@@ -4,7 +4,7 @@ const Persons = ({ queryResult }) => {
   return (
     <div>
       {queryResult.map((person) => (
-        <p key={person.name}>
+        <p key={person.id}>
           {person.name} {person.number}
         </p>
       ))}

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
-import axios from "axios";
 import Server from "./services/Server";
 
 const App = () => {
@@ -10,6 +9,7 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
+  console.log("Current persons:", persons);
 
   const queryResult = persons.filter((person) => person.name.includes(search));
 
@@ -63,7 +63,13 @@ const App = () => {
         nameOnchange={handleSetNewName}
         numberOnChange={handleSetNewNumber}
       />
-      <Persons queryResult={queryResult} />
+      <div>
+        {queryResult.map((person) => (
+          <p key={person.id}>
+            {person.name} {person.number}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
