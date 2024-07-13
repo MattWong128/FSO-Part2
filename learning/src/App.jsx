@@ -9,10 +9,8 @@ const App = () => {
   const [showAll, setShowAll] = useState(true);
 
   useEffect(() => {
-    noteService.getAll().then((response) => {
-      console.log("promise fulfilled");
-      console.log(response.data);
-      setNotes(response.data);
+    noteService.getAll().then((initialNotes) => {
+      setNotes(initialNotes);
     });
   }, []);
 
@@ -21,7 +19,7 @@ const App = () => {
     const changedNote = { ...note, important: !note.important };
 
     noteService.update(id, changedNote).then((response) => {
-      setNotes(notes.map((n) => (n.id !== id ? n : response.data)));
+      setNotes(notes.map((n) => (n.id !== id ? n : response)));
     });
   };
 
@@ -34,7 +32,7 @@ const App = () => {
     };
 
     noteService.create(noteObject).then((response) => {
-      setNotes(notes.concat(response.data));
+      setNotes(notes.concat(response));
       setNewNote("");
       console.log(notes);
     });
