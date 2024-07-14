@@ -51,7 +51,6 @@ const App = () => {
   };
   const deletePerson = (id) => {
     Server.del(id).then((deletedPerson) => {
-      console.log(deletePerson);
       setPersons(persons.filter((person) => person.id !== id));
     });
   };

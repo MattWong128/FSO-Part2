@@ -9,7 +9,7 @@ const get = () => {
 };
 
 const del = (id) => {
-  axios.delete(`${baseUrl}/${id}`).then((res) => {
+  return axios.delete(`${baseUrl}/${id}`).then((res) => {
     console.log("deleting", res.data);
     return res.data;
   });
