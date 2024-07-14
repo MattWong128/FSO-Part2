@@ -14,8 +14,15 @@ const del = (id) => {
     return res.data;
   });
 };
+const update = (personObj) => {
+  return axios.put(`${baseUrl}/${personObj.id}`, personObj).then((res) => {
+    console.log("updating", res.data);
+    return res.data;
+  });
+};
 export default {
   create,
   get,
   del,
+  update,
 };
