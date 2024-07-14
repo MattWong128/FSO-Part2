@@ -49,7 +49,12 @@ const App = () => {
     console.log(persons);
     console.log("adding new persone: ", newPersonObj);
   };
-
+  const deletePerson = (id) => {
+    Server.del(id).then((deletedPerson) => {
+      console.log(deletePerson);
+      setPersons(persons.filter((person) => person.id !== id));
+    });
+  };
   return (
     <div>
       <h2>Phonebook</h2>
@@ -64,12 +69,8 @@ const App = () => {
         nameOnchange={handleSetNewName}
         numberOnChange={handleSetNewNumber}
       />
-      {queryResult.map((person) => (
-        <li key={person.id}>
-          {person.name} {person.number}
-        </li>
-      ))}
-      {/* <Persons queryResult={queryResult} /> */}
+
+      <Persons queryResult={queryResult} handleDelete={deletePerson} />
     </div>
   );
 };
