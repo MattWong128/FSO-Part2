@@ -50,9 +50,12 @@ const App = () => {
     console.log("adding new persone: ", newPersonObj);
   };
   const deletePerson = (id) => {
-    Server.del(id).then((deletedPerson) => {
-      setPersons(persons.filter((person) => person.id !== id));
-    });
+    const name = persons.find((p) => p.id == id).name;
+    if (window.confirm(`delete ${name}`)) {
+      Server.del(id).then(() => {
+        setPersons(persons.filter((person) => person.id !== id));
+      });
+    }
   };
   return (
     <div>
