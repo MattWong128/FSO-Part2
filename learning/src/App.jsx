@@ -7,6 +7,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState("");
   const [showAll, setShowAll] = useState(true);
+  console.log("Current notes:", notes);
 
   useEffect(() => {
     noteService.getAll().then((initialNotes) => {
