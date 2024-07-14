@@ -15,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     Server.get().then((initialNumber) => {
-      setPersons(persons.concat(initialNumber));
+      setPersons(initialNumber);
     });
   }, []);
 
@@ -40,10 +40,11 @@ const App = () => {
       name: newName,
       number: newNumber,
     };
-    setPersons(persons.concat(newPersonObj));
-    Server.add(newPersonObj);
-    setNewName("");
-    setNewNumber("");
+    Server.create(newPersonObj).then((returnedPerson) => {
+      setPersons(persons.concat(returnedPerson));
+      setNewName("");
+      setNewNumber("");
+    });
 
     console.log(persons);
     console.log("adding new persone: ", newPersonObj);
@@ -63,13 +64,12 @@ const App = () => {
         nameOnchange={handleSetNewName}
         numberOnChange={handleSetNewNumber}
       />
-      <div>
-        {queryResult.map((person) => (
-          <p key={person.id}>
-            {person.name} {person.number}
-          </p>
-        ))}
-      </div>
+      {queryResult.map((person) => (
+        <li key={person.id}>
+          {person.name} {person.number}
+        </li>
+      ))}
+      {/* <Persons queryResult={queryResult} /> */}
     </div>
   );
 };

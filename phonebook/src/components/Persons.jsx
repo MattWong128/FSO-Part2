@@ -4,9 +4,9 @@ const Persons = ({ queryResult }) => {
   return (
     <div>
       {queryResult.map((person) => (
-        <p key={person.id}>
+        <li key={person.id}>
           {person.name} {person.number}
-        </p>
+        </li>
       ))}
     </div>
   );
