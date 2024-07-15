@@ -40,16 +40,16 @@ const App = () => {
         console.log("-------".personTochange);
         const updatedPerson = { ...personTochange, number: newNumber };
 
-        Server.update(updatedPerson).then((returnedPerson) => {
-          setPersons(persons.map((person) => (person.id !== updatedPerson.id ? person : returnedPerson)));
-        });
-        // .catch((err) => {
-        //   setMessage(`Information of ${updatedPerson.name} has already been removed`);
-        //   setPersons(person.filter((p) => p.id !== updatedPerson.id));
-        //   setTimeout(() => {
-        //     setMessage(null);
-        //   }, 5000);
-        // });
+        Server.update(updatedPerson)
+          .then((returnedPerson) => {
+            setPersons(persons.map((person) => (person.id !== updatedPerson.id ? person : returnedPerson)));
+          })
+          .catch((err) => {
+            setMessage(`Information of ${updatedPerson.name} has already been removed`);
+            setTimeout(() => {
+              setMessage(null);
+            }, 5000);
+          });
       }
       return;
     }
