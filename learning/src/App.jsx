@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Note from "./components/Note";
 import noteService from "./services/notes";
+import "./index.css";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -50,20 +50,14 @@ const App = () => {
     setNewNote(noteContent);
     console.log(noteContent);
   };
-  const notesToShow = showAll
-    ? notes
-    : notes.filter((note) => note.important === true);
+  const notesToShow = showAll ? notes : notes.filter((note) => note.important === true);
 
   return (
     <div>
       <h1>Notes</h1>
       <ul>
         {notesToShow.map((note) => (
-          <Note
-            key={note.id}
-            toggleImportance={() => toggleImportance(note.id)}
-            note={note}
-          />
+          <Note key={note.id} toggleImportance={() => toggleImportance(note.id)} note={note} />
         ))}
       </ul>
 
@@ -73,9 +67,7 @@ const App = () => {
         <p>{newNote}</p>
       </form>
       <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? "important only" : "all"}
-        </button>
+        <button onClick={() => setShowAll(!showAll)}>show {showAll ? "important only" : "all"}</button>
       </div>
     </div>
   );
