@@ -16,7 +16,11 @@ function App() {
   }, []);
 
   const searchCountries = (query) => {
-    const queryResult = listOfAllCountries.filter((name) => name.toLowerCase().includes(query.toLowerCase()));
+    const queryResult = listOfAllCountries.filter((country) => {
+      let countryName = country.name.common.toLowerCase();
+      return countryName.includes(query.toLowerCase());
+    });
+    // console.log(queryResult);
     setCountries(queryResult);
   };
   const handleCountryChange = (event) => {
