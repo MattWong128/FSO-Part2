@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Server from "./Server";
+
+let listOfAllCountries = [];
 
 function App() {
   const [country, setCountry] = useState("");
+  const [countries, setCountries] = useState({});
 
+  useEffect(() => {
+    Server.getAllCountries().then((list) => {
+      listOfAllCountries = list;
+      console.log(listOfAllCountries);
+    });
+  }, []);
+
+  const searchCountries = (query) => {};
   const handleCountryChange = (event) => {
     event.preventDefault();
-    console.log(event.target);
     setCountry(event.target.value);
   };
 
