@@ -46,6 +46,7 @@ const App = () => {
           })
           .catch((err) => {
             setMessage(`Information of ${updatedPerson.name} has already been removed`);
+            Server.get().then((currentPersons) => setPersons(currentPersons));
             setTimeout(() => {
               setMessage(null);
             }, 5000);

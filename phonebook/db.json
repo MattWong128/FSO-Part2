@@ -1,36 +1,6 @@
 {
   "persons": [
     {
-      "name": "Arto",
-      "number": "12-43-234345",
-      "id": "1"
-    },
-    {
-      "name": "Ada",
-      "number": "Arto ",
-      "id": "2"
-    },
-    {
-      "id": "60f2",
-      "name": "Matthew Wong",
-      "number": "647-636-8368"
-    },
-    {
-      "id": "051f",
-      "name": "Bob",
-      "number": "123456789"
-    },
-    {
-      "id": "be4d",
-      "name": "Sally",
-      "number": "098766555"
-    },
-    {
-      "id": "b635",
-      "name": "sdf",
-      "number": ""
-    },
-    {
       "id": "9d33",
       "name": "asd",
       "number": ""
@@ -38,16 +8,6 @@
     {
       "id": "ef66",
       "name": "a",
-      "number": ""
-    },
-    {
-      "id": "4f59",
-      "name": "asdaaa",
-      "number": ""
-    },
-    {
-      "id": "a667",
-      "name": "Fucker 9000",
       "number": ""
     },
     {
