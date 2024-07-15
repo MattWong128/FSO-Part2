@@ -25,8 +25,15 @@ function App() {
   };
   const handleCountryChange = (event) => {
     event.preventDefault();
-    setCountry(event.target.value);
-    searchCountries(event.target.value);
+    const country = event.target.value;
+
+    if (country == "") {
+      setCountries(null);
+      setCountry("");
+      return;
+    }
+    setCountry(country);
+    searchCountries(country);
   };
 
   return (
