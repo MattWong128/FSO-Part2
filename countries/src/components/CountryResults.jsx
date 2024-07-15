@@ -43,7 +43,7 @@ const CountryResults = ({ queryResult }) => {
         return (
           <li key={name}>
             {name} <button onClick={() => handleShow(country)}>{!isCountrySelected(country) ? "show" : "hide"}</button>
-            {selectedCountries.includes(country) && <CountryDetails country={country} />}
+            {isCountrySelected(country) && <CountryDetails country={country} />}
           </li>
         );
       })}
