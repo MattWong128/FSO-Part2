@@ -1,6 +1,7 @@
 import React from "react";
 
 const CountryResults = ({ queryResult }) => {
+  if (!queryResult) return null;
   if (queryResult.length > 10) return <div>{`Too many matches, results: ${queryResult.length}`}</div>;
   if (queryResult.length == 0) return <div>{` No matches, results: ${queryResult.length} `}</div>;
   return (
