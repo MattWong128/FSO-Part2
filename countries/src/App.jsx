@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     Server.getAllCountries().then((list) => {
       listOfAllCountries = list;
-      // console.log(listOfAllCountries);
     });
   }, []);
 
@@ -20,7 +19,6 @@ function App() {
       let countryName = country.name.common.toLowerCase();
       return countryName.includes(query.toLowerCase());
     });
-    // console.log(queryResult);
     setCountries(queryResult);
   };
   const handleCountryChange = (event) => {
