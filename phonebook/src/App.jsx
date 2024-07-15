@@ -37,11 +37,19 @@ const App = () => {
     if (doesNameExist) {
       if (window.confirm(`${newName} is already added to the phone book, replace the old number with a new one?`)) {
         const personTochange = persons.find((person) => person.name == newName);
+        console.log("-------".personTochange);
         const updatedPerson = { ...personTochange, number: newNumber };
 
         Server.update(updatedPerson).then((returnedPerson) => {
           setPersons(persons.map((person) => (person.id !== updatedPerson.id ? person : returnedPerson)));
         });
+        // .catch((err) => {
+        //   setMessage(`Information of ${updatedPerson.name} has already been removed`);
+        //   setPersons(person.filter((p) => p.id !== updatedPerson.id));
+        //   setTimeout(() => {
+        //     setMessage(null);
+        //   }, 5000);
+        // });
       }
       return;
     }

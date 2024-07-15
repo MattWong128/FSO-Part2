@@ -5,7 +5,8 @@ const Notification = ({ message }) => {
     console.log("Message null");
     return null;
   }
-  return <div className='notif'>{message}</div>;
+  if (message.includes("Added")) return <div className='success'>{message}</div>;
+  return <div className='error'>{message}</div>;
 };
 
 export default Notification;
