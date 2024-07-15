@@ -35,7 +35,6 @@ const App = () => {
       if (window.confirm(`${newName} is already added to the phone book, replace the old number with a new one?`)) {
         const personTochange = persons.find((person) => person.name == newName);
         const updatedPerson = { ...personTochange, number: newNumber };
-        // console.log("-----", updatedPerson.id);
         Server.update(updatedPerson).then((returnedPerson) => {
           setPersons(persons.map((person) => (person.id !== updatedPerson.id ? person : returnedPerson)));
         });
