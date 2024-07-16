@@ -7,7 +7,7 @@ let listOfAllCountries = [];
 function App() {
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState(null);
-
+  console.log(countries);
   useEffect(() => {
     Server.getAllCountries().then((list) => {
       listOfAllCountries = list;

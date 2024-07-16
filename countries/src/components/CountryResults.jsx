@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Weather from "./Weather";
 
 const CountryDetails = ({ country }) => {
   const languages = Object.values(country.languages);
@@ -14,13 +15,15 @@ const CountryDetails = ({ country }) => {
           <li key={i}>{language}</li>
         ))}
       </ul>
+      <h1> Weather in {country.capital}</h1>
+      <Weather country={country} />
     </div>
   );
 };
 
 const CountryResults = ({ queryResult }) => {
   const [selectedCountries, setSelectedCountries] = useState([]);
-  console.log(selectedCountries);
+  // console.log(selectedCountries);
   if (!queryResult) return null;
   if (queryResult.length > 10) return <div>{`Too many matches, results: ${queryResult.length}`}</div>;
   if (queryResult.length == 0) return <div>{` No matches, results: ${queryResult.length} `}</div>;
