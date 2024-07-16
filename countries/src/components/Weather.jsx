@@ -23,13 +23,20 @@ const getWeather = (country) => {
 };
 const Weather = ({ country }) => {
   const [weather, setWeather] = useState(null);
+  const [iconUrl, setIconUrl] = useState("");
   useEffect(() => {
-    getWeather(country).then((weather) => setWeather(weather));
+    getWeather(country).then((info) => {
+      setWeather(info);
+      const url = `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`;
+      setIconUrl(url);
+    });
   }, []);
   if (!weather) return null;
+
   return (
     <div>
       <p>Temperature {weather.main.temp} Celcius</p>
+      <img src={iconUrl} alt='' />
       <p>wind {weather.wind.speed} m/s</p>
     </div>
   );
