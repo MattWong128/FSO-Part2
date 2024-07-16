@@ -26,6 +26,7 @@ const Weather = ({ country }) => {
   useEffect(() => {
     getWeather(country).then((weather) => setWeather(weather));
   }, []);
+  if (!weather) return null;
   return (
     <div>
       <p>Temperature {weather.main.temp} Celcius</p>
