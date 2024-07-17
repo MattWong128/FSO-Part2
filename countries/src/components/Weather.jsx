@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const API_KEY = "02d5025c3384c3caa87f8b3c95b43491";
+const API_KEY = import.meta.env.VITE_SOME_KEY;
 
 const getCountryCoordinates = (country) => {
   const capital = country.capital[0];
